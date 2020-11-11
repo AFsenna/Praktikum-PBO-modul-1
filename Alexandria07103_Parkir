@@ -59,7 +59,7 @@ public class Alexandria07103_Parkir {
         int alexandria07103_jamkeluar = input.nextInt();
         System.out.print("Masukkan menit keluar     = ");
         int alexandria07103_menitkeluar = input.nextInt();
-        alexandria07103_nota.add(new Alexandria07103_Nota (new Date ("11/08/2020"),alexandria07103_jammasuk,alexandria07103_menitmasuk,alexandria07103_jamkeluar,alexandria07103_menitkeluar));  
+        alexandria07103_nota.add(new Alexandria07103_Nota (new Date (),alexandria07103_jammasuk,alexandria07103_menitmasuk,alexandria07103_jamkeluar,alexandria07103_menitkeluar));  
         
     }
     
