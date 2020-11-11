@@ -1,0 +1,135 @@
+package alexandria07103_main;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Date;
+
+public class Alexandria07103_Parkir {
+    static ArrayList <Alexandria07103_Kendaraan> alexandria07103_kendaraan = new ArrayList();
+    static ArrayList <Alexandria07103_Nota> alexandria07103_nota = new ArrayList();
+    static Scanner input = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+                System.out.println("Program sistem informasi data parkir");
+                int alexandria07103_pilihan;
+                do {
+                    System.out.println("[1] Input data");
+                    System.out.println("[2] Lihat data"); 
+                    System.out.println("[3] Delete data");
+                    System.out.println("[4] Cetak nota");
+                    System.out.println("[5] Exit");
+                    System.out.print("Pilihan = ");
+                    alexandria07103_pilihan = input.nextInt();
+                    switch(alexandria07103_pilihan){
+                       case 1:
+                           alexandria07103_input();
+                           break;
+                       case 2 :
+                           alexandria07103_lihatdata();
+                           break;
+                       case 3 : 
+                           alexandria07103_delete();
+                           break;
+                       case 4 :    
+                           alexandria07103_cetaknota();
+                           break;
+                } 
+                
+            }while(alexandria07103_pilihan!=5);
+    }
+    
+    static void alexandria07103_input() {
+
+        System.out.print("Masukkan jenis kendaraan  = ");
+        String alexandria07103_jeniskendaraan = input.next();
+        System.out.print("Masukkan plat nomor       = ");
+        String alexandria07103_platnomor = input.next();
+        alexandria07103_kendaraan.add(new Alexandria07103_Kendaraan(alexandria07103_platnomor,alexandria07103_jeniskendaraan,"PARKIR","SUDAH KELUAR"));
+        String alexandria07103_jammasuk;
+        String alexandria07103_menitmasuk;                
+        DateFormat formatalexandria07103_Hmasuk = new SimpleDateFormat("HH");
+        DateFormat formatalexandria07103_Mmasuk = new SimpleDateFormat("mm");
+        Date getalexandria07103_jammasuk = new Date();
+        Date getalexandria07103_menitmasuk = new Date(); 
+        alexandria07103_jammasuk = formatalexandria07103_Hmasuk.format(getalexandria07103_jammasuk);
+        alexandria07103_menitmasuk = formatalexandria07103_Mmasuk.format(getalexandria07103_menitmasuk);
+        System.out.print("Masukkan jam keluar       = ");
+        int alexandria07103_jamkeluar = input.nextInt();
+        System.out.print("Masukkan menit keluar     = ");
+        int alexandria07103_menitkeluar = input.nextInt();
+        alexandria07103_nota.add(new Alexandria07103_Nota (new Date ("11/08/2020"),alexandria07103_jammasuk,alexandria07103_menitmasuk,alexandria07103_jamkeluar,alexandria07103_menitkeluar));  
+        
+    }
+    
+    static void alexandria07103_lihatdata(){
+        if(alexandria07103_kendaraan.isEmpty()){
+            System.out.println("DATA KOSONG");
+        }
+        else{
+            for(int alexandria07103_i=0;alexandria07103_i<alexandria07103_kendaraan.size();alexandria07103_i++){
+            System.out.println("Kondisi kendaraan   = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Kondisi());    
+            System.out.println("Jenis kendaraan     = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Jeniskendaraan());
+            System.out.println("Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Platnomor());            
+            System.out.println("Tanggal parkir      = "+ new SimpleDateFormat("dd-MM-yyyy").format(alexandria07103_nota.get(alexandria07103_i).alexandria07103_Tanggalparkir));
+            System.out.println("Waktu masuk         = "+ alexandria07103_nota.get(0).alexandria07103_jammasuk + " : " + alexandria07103_nota.get(0).alexandria07103_menitmasuk + " WIB");
+            System.out.println("-----------------------------------------------------------");
+        }
+        }
+    }
+    
+    static void alexandria07103_delete(){
+        int alexandria07103_index;
+        for(int alexandria07103_i=0;alexandria07103_i<alexandria07103_kendaraan.size();alexandria07103_i++){
+        System.out.println("["+alexandria07103_i+"] Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Platnomor());                        
+        }        
+        System.out.print("Plat nomor yang mau dihapus = ");
+        alexandria07103_index = input.nextInt();
+        alexandria07103_kendaraan.remove(alexandria07103_index);
+    }    
+    static void alexandria07103_cetaknota(){
+        int alexandria07103_x;
+        if(alexandria07103_kendaraan.size()==0){
+            System.out.println("DATA KOSONG");
+        }
+        else{
+        for(int alexandria07103_i=0;alexandria07103_i<alexandria07103_kendaraan.size();alexandria07103_i++){
+            System.out.println("["+alexandria07103_i+"]"+"Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Platnomor());                        
+        }
+        System.out.print("index plat nomor = \n");
+        alexandria07103_x = input.nextInt();
+        alexandria07103_kendaraan.get(alexandria07103_x).alexandria07103_kondisi= alexandria07103_kendaraan.get(alexandria07103_x).alexandria07103_kondisibaru;
+        
+        int alexandria07103_timeH = Integer.parseInt(alexandria07103_nota.get(0).alexandria07103_jammasuk);
+        int alexandria07103_timeM = Integer.parseInt(alexandria07103_nota.get(0).alexandria07103_menitmasuk);        
+        System.out.println("====BANDAR UDARA JUANDA SURABAYA====");
+        System.out.println("====================================");
+            System.out.println("Jenis kendaraan     = "+alexandria07103_kendaraan.get(alexandria07103_x).getalexandria07103_Jeniskendaraan());
+            System.out.println("Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_x).getalexandria07103_Platnomor());
+            System.out.println("Tanggal parkir      = "+ new SimpleDateFormat("dd-MM-yyyy").format(alexandria07103_nota.get(alexandria07103_x).alexandria07103_Tanggalparkir));
+            System.out.println("Waktu masuk         = " + alexandria07103_timeH + " : " + alexandria07103_timeM + " WIB");
+            System.out.println("Waktu keluar        = " + alexandria07103_nota.get(alexandria07103_x).alexandria07103_jamkeluar + " : " + alexandria07103_nota.get(alexandria07103_x).alexandria07103_menitkeluar + " WIB");
+            int alexandria07103_durasijam = alexandria07103_nota.get(alexandria07103_x).alexandria07103_jamkeluar - alexandria07103_timeH;
+            int alexandria07103_durasimenit = alexandria07103_nota.get(alexandria07103_x).alexandria07103_menitkeluar - alexandria07103_timeM;
+            System.out.println("Durasi parkir       = " + alexandria07103_durasijam + " : " + alexandria07103_durasimenit);  
+            if ("mobil".equals(alexandria07103_kendaraan.get(alexandria07103_x).getalexandria07103_Jeniskendaraan())){
+                int alexandria07103_harga1 = alexandria07103_durasijam*5000;
+                int alexandria07103_harga2 = alexandria07103_durasimenit*100;
+                int alexandria07103_totalH = alexandria07103_harga1 + alexandria07103_harga2;
+                System.out.println("Harga parkir        = "+alexandria07103_totalH);
+            }
+            else if ("motor".equals(alexandria07103_kendaraan.get(alexandria07103_x).getalexandria07103_Jeniskendaraan())){
+                int alexandria07103_harga1 = alexandria07103_durasijam*2000;
+                int alexandria07103_harga2 = alexandria07103_durasimenit*50;
+                int alexandria07103_totalH = alexandria07103_harga1 + alexandria07103_harga2;
+                System.out.println("Harga parkir        = "+alexandria07103_totalH);
+            }
+            else{
+                System.out.println("PILIHAN KENDARAAN SALAH");
+            }
+        System.out.println("====================================");
+        }
+    }
+}
+   
