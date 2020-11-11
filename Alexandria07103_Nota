@@ -1,0 +1,40 @@
+package alexandria07103_main;
+import java.util.Date;
+
+public class Alexandria07103_Nota {
+    Date alexandria07103_Tanggalparkir;
+    String alexandria07103_jammasuk;
+    String alexandria07103_menitmasuk;
+    int alexandria07103_jamkeluar;
+    int alexandria07103_menitkeluar;
+
+        public Alexandria07103_Nota(Date alexandria07103_tanggalparkir, String alexandria07103_jammasuk, String alexandria07103_menitmasuk, int alexandria07103_jamkeluar, int alexandria07103_menitkeluar){
+        this.alexandria07103_Tanggalparkir = alexandria07103_tanggalparkir;
+        this.alexandria07103_jammasuk = alexandria07103_jammasuk;
+        this.alexandria07103_jamkeluar = alexandria07103_jamkeluar;
+        this.alexandria07103_menitmasuk = alexandria07103_menitmasuk;
+        this.alexandria07103_menitkeluar = alexandria07103_menitkeluar;
+    }
+    
+    Date getalexandria07103_Date(){
+        return this.alexandria07103_Tanggalparkir;
+    }
+    
+    String getalexandria07103_Jammasuk () {
+        return this.alexandria07103_jammasuk;
+    }
+    
+    int getalexandria07103_Jamkeluar () {
+        return this.alexandria07103_jamkeluar;
+    }
+    
+    String getalexandria07103_Menitmasuk () {
+        return this.alexandria07103_menitmasuk;
+    }
+    
+    int getalexandria07103_menitkeluar () {
+        return this.alexandria07103_menitkeluar;
+    }
+    
+ 
+}
