@@ -1,0 +1,25 @@
+package alexandria07103_main;
+public class Alexandria07103_Kendaraan {
+    String alexandria07103_platnomor;
+    String alexandria07103_jeniskendaraan;
+    String alexandria07103_kondisi;    
+    String alexandria07103_kondisibaru;    
+    public Alexandria07103_Kendaraan(String alexandria07103_platnomor,String alexandria07103_jeniskendaraan, String alexandria07103_kondisi,String alexandria07103_kondisibaru){
+        this.alexandria07103_platnomor = alexandria07103_platnomor;
+        this.alexandria07103_jeniskendaraan = alexandria07103_jeniskendaraan;
+        this.alexandria07103_kondisi = alexandria07103_kondisi;
+        this.alexandria07103_kondisibaru = alexandria07103_kondisibaru;
+    }
+    String getalexandria07103_Platnomor() {
+        return this.alexandria07103_platnomor;
+    }
+    String getalexandria07103_Jeniskendaraan() {
+        return this.alexandria07103_jeniskendaraan;
+    }   
+    String getalexandria07103_Kondisi() {
+        return this.alexandria07103_kondisi;
+    }   
+    String getalexandria07103_Kondisibaru() {
+        return this.alexandria07103_kondisibaru;
+    }       
+}
