@@ -1,11 +1,9 @@
 package alexandria07103_main;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Date;
-
 public class Alexandria07103_Parkir {
     static ArrayList <Alexandria07103_Kendaraan> alexandria07103_kendaraan = new ArrayList();
     static ArrayList <Alexandria07103_Nota> alexandria07103_nota = new ArrayList();
@@ -41,7 +39,6 @@ public class Alexandria07103_Parkir {
     }
     
     static void alexandria07103_input() {
-
         System.out.print("Masukkan jenis kendaraan  = ");
         String alexandria07103_jeniskendaraan = input.next();
         System.out.print("Masukkan plat nomor       = ");
@@ -55,12 +52,7 @@ public class Alexandria07103_Parkir {
         Date getalexandria07103_menitmasuk = new Date(); 
         alexandria07103_jammasuk = formatalexandria07103_Hmasuk.format(getalexandria07103_jammasuk);
         alexandria07103_menitmasuk = formatalexandria07103_Mmasuk.format(getalexandria07103_menitmasuk);
-        System.out.print("Masukkan jam keluar       = ");
-        int alexandria07103_jamkeluar = input.nextInt();
-        System.out.print("Masukkan menit keluar     = ");
-        int alexandria07103_menitkeluar = input.nextInt();
-        alexandria07103_nota.add(new Alexandria07103_Nota (new Date (),alexandria07103_jammasuk,alexandria07103_menitmasuk,alexandria07103_jamkeluar,alexandria07103_menitkeluar));  
-        
+        alexandria07103_nota.add(new Alexandria07103_Nota (new Date (),alexandria07103_jammasuk,alexandria07103_menitmasuk,0,0));  
     }
     
     static void alexandria07103_lihatdata(){
@@ -74,6 +66,9 @@ public class Alexandria07103_Parkir {
             System.out.println("Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Platnomor());            
             System.out.println("Tanggal parkir      = "+ new SimpleDateFormat("dd-MM-yyyy").format(alexandria07103_nota.get(alexandria07103_i).alexandria07103_Tanggalparkir));
             System.out.println("Waktu masuk         = "+ alexandria07103_nota.get(0).alexandria07103_jammasuk + " : " + alexandria07103_nota.get(0).alexandria07103_menitmasuk + " WIB");
+            if("SUDAH KELUAR".equals(alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Kondisi())){                            
+                System.out.println("Waktu keluar        = " + alexandria07103_nota.get(alexandria07103_i).alexandria07103_jamkeluar + " : " + alexandria07103_nota.get(alexandria07103_i).alexandria07103_menitkeluar + " WIB");
+            }
             System.out.println("-----------------------------------------------------------");
         }
         }
@@ -90,17 +85,24 @@ public class Alexandria07103_Parkir {
     }    
     static void alexandria07103_cetaknota(){
         int alexandria07103_x;
-        if(alexandria07103_kendaraan.size()==0){
+        int alexandria07103_jamkeluar;
+        int alexandria07103_menitkeluar;
+        if(alexandria07103_kendaraan.isEmpty()){
             System.out.println("DATA KOSONG");
         }
         else{
         for(int alexandria07103_i=0;alexandria07103_i<alexandria07103_kendaraan.size();alexandria07103_i++){
             System.out.println("["+alexandria07103_i+"]"+"Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Platnomor());                        
         }
-        System.out.print("index plat nomor = \n");
+        System.out.print("index plat nomor = ");
         alexandria07103_x = input.nextInt();
         alexandria07103_kendaraan.get(alexandria07103_x).alexandria07103_kondisi= alexandria07103_kendaraan.get(alexandria07103_x).alexandria07103_kondisibaru;
-        
+        System.out.print("Masukkan jam keluar       = ");
+        alexandria07103_jamkeluar = input.nextInt();
+        alexandria07103_nota.get(alexandria07103_x).alexandria07103_jamkeluar = alexandria07103_jamkeluar;        
+        System.out.print("Masukkan menit keluar     = ");
+        alexandria07103_menitkeluar = input.nextInt();
+        alexandria07103_nota.get(alexandria07103_x).alexandria07103_menitkeluar = alexandria07103_menitkeluar;                
         int alexandria07103_timeH = Integer.parseInt(alexandria07103_nota.get(0).alexandria07103_jammasuk);
         int alexandria07103_timeM = Integer.parseInt(alexandria07103_nota.get(0).alexandria07103_menitmasuk);        
         System.out.println("====BANDAR UDARA JUANDA SURABAYA====");
@@ -109,9 +111,9 @@ public class Alexandria07103_Parkir {
             System.out.println("Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_x).getalexandria07103_Platnomor());
             System.out.println("Tanggal parkir      = "+ new SimpleDateFormat("dd-MM-yyyy").format(alexandria07103_nota.get(alexandria07103_x).alexandria07103_Tanggalparkir));
             System.out.println("Waktu masuk         = " + alexandria07103_timeH + " : " + alexandria07103_timeM + " WIB");
-            System.out.println("Waktu keluar        = " + alexandria07103_nota.get(alexandria07103_x).alexandria07103_jamkeluar + " : " + alexandria07103_nota.get(alexandria07103_x).alexandria07103_menitkeluar + " WIB");
-            int alexandria07103_durasijam = alexandria07103_nota.get(alexandria07103_x).alexandria07103_jamkeluar - alexandria07103_timeH;
-            int alexandria07103_durasimenit = alexandria07103_nota.get(alexandria07103_x).alexandria07103_menitkeluar - alexandria07103_timeM;
+            System.out.println("Waktu keluar        = " + alexandria07103_jamkeluar + " : " + alexandria07103_menitkeluar + " WIB");
+            int alexandria07103_durasijam = alexandria07103_jamkeluar - alexandria07103_timeH;
+            int alexandria07103_durasimenit = alexandria07103_menitkeluar - alexandria07103_timeM;
             System.out.println("Durasi parkir       = " + alexandria07103_durasijam + " : " + alexandria07103_durasimenit);  
             if ("mobil".equals(alexandria07103_kendaraan.get(alexandria07103_x).getalexandria07103_Jeniskendaraan())){
                 int alexandria07103_harga1 = alexandria07103_durasijam*5000;
