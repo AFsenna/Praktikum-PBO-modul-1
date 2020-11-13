@@ -10,6 +10,7 @@ public class Alexandria07103_Parkir {
     static Scanner input = new Scanner(System.in);
     
     public static void main(String[] args) {
+            Alexandria07103_Parkir data = new Alexandria07103_Parkir();
                 System.out.println("Program sistem informasi data parkir");
                 int alexandria07103_pilihan;
                 do {
@@ -22,23 +23,23 @@ public class Alexandria07103_Parkir {
                     alexandria07103_pilihan = input.nextInt();
                     switch(alexandria07103_pilihan){
                        case 1:
-                           alexandria07103_input();
+                           data.alexandria07103_input();
                            break;
                        case 2 :
-                           alexandria07103_lihatdata();
+                           data.alexandria07103_lihatdata();
                            break;
                        case 3 : 
-                           alexandria07103_delete();
+                           data.alexandria07103_delete();
                            break;
                        case 4 :    
-                           alexandria07103_cetaknota();
+                           data.alexandria07103_cetaknota();
                            break;
                 } 
                 
             }while(alexandria07103_pilihan!=5);
     }
     
-    static void alexandria07103_input() {
+    void alexandria07103_input() {
         System.out.print("Masukkan jenis kendaraan  = ");
         String alexandria07103_jeniskendaraan = input.next();
         System.out.print("Masukkan plat nomor       = ");
@@ -55,7 +56,7 @@ public class Alexandria07103_Parkir {
         alexandria07103_nota.add(new Alexandria07103_Nota (new Date (),alexandria07103_jammasuk,alexandria07103_menitmasuk,0,0));  
     }
     
-    static void alexandria07103_lihatdata(){
+    void alexandria07103_lihatdata(){
         if(alexandria07103_kendaraan.isEmpty()){
             System.out.println("DATA KOSONG");
         }
@@ -74,7 +75,7 @@ public class Alexandria07103_Parkir {
         }
     }
     
-    static void alexandria07103_delete(){
+    void alexandria07103_delete(){
         int alexandria07103_index;
         for(int alexandria07103_i=0;alexandria07103_i<alexandria07103_kendaraan.size();alexandria07103_i++){
         System.out.println("["+alexandria07103_i+"] Plat nomor          = "+alexandria07103_kendaraan.get(alexandria07103_i).getalexandria07103_Platnomor());                        
@@ -83,7 +84,7 @@ public class Alexandria07103_Parkir {
         alexandria07103_index = input.nextInt();
         alexandria07103_kendaraan.remove(alexandria07103_index);
     }    
-    static void alexandria07103_cetaknota(){
+    void alexandria07103_cetaknota(){
         int alexandria07103_x;
         int alexandria07103_jamkeluar;
         int alexandria07103_menitkeluar;
